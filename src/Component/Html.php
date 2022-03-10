@@ -2,7 +2,10 @@
 
 declare(strict_types=1);
 
-namespace DigPHP\Form;
+namespace DigPHP\Form\Component;
+
+use DigPHP\Form\Builder;
+use DigPHP\Form\ItemInterface;
 
 class Html implements ItemInterface
 {

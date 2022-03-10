@@ -42,6 +42,6 @@ abstract class Common implements ItemInterface
     public function __toString()
     {
         $ref = new ReflectionClass(get_called_class());
-        return '<div id="' . $this->id . '">' . Builder::getTemplate()->renderFromFile(strtolower($ref->getShortName()) . '@form-builder', $this->data) . '</div>';
+        return '<div id="' . $this->id . '">' . Builder::getTemplate()->renderFromFile(strtolower($ref->getShortName()) . '@form-builder', $this->_data) . '</div>';
     }
 }

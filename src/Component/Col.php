@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DigPHP\Form;
+namespace DigPHP\Form\Component;
+
+use DigPHP\Form\ItemInterface;
 
 class Col implements ItemInterface
 {
