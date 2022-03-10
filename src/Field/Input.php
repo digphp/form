@@ -6,11 +6,13 @@ namespace DigPHP\Form\Field;
 
 class Input extends Common
 {
-    public function __construct(string $label, string $name, $value = null, string $type = 'text')
+    public function __construct(string $label, string $name, $value = null, array $options = [])
     {
+        foreach ($options as $key => $vo) {
+            $this->$key = $vo;
+        }
         $this->label = $label;
         $this->name = $name;
         $this->value = $value;
-        $this->type = $type;
     }
 }

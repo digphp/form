@@ -1,6 +1,6 @@
 <div class="mt-2">
     <label for="{$id}_field" class="form-label">{$label}</label>
-    <input type="{$type}" name="{$name}" value="{$value}" id="{$id}_field" class="form-control" list="{$id}_datalist">
+    <input type="{$type??'text'}" name="{$name}" value="{$value}" id="{$id}_field" class="form-control" list="{$id}_datalist">
     <datalist id="{$id}_datalist">
         {if isset($datalist) && is_array($datalist)}
         {foreach $datalist as $_k => $_vo}
