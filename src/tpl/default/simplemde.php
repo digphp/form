@@ -28,8 +28,9 @@
                         cache: false,
                         processData: false,
                         contentType: false,
+                        dataType: "JSON",
                         success: function(response) {
-                            if (response.code) {
+                            if (response.status) {
                                 callback(response);
                             } else {
                                 alert(response.message);
@@ -45,7 +46,7 @@
                 fileinput.onchange = function() {
                     $.each(event.target.files, function(indexInArray, valueOfElement) {
                         upload_by_form("{$upload_url??''}", valueOfElement, function(response) {
-                            if (response.code) {
+                            if (response.status) {
                                 cm.replaceSelection("[" + response.data.src + "](" + response.data.src + ")");
                                 cm.focus();
                             } else {
