@@ -4,23 +4,18 @@ declare(strict_types=1);
 
 namespace DigPHP\Form\Component;
 
+use DigPHP\Form\Builder;
 use DigPHP\Form\ItemInterface;
 
 class Tab implements ItemInterface
 {
 
-    private $items = [];
-    private $label = [];
+    protected $tabs = [];
 
-    public function __construct(string $label)
+    public function addTab(TabItem ...$tabs): self
     {
-        $this->label = $label;
-    }
-
-    public function addItem(TabItem ...$items): self
-    {
-        foreach ($items as $item) {
-            $this->items[] = [
+        foreach ($tabs as $item) {
+            $this->tabs[] = [
                 'label' => $item->getLabel(),
                 'body' => $item->getBody(),
             ];
@@ -35,22 +30,23 @@ class Tab implements ItemInterface
 <?php
 $_id = 'nav_' . uniqid();
 ?>
-<ul class="{$class??'nav nav-tabs'}" role="tablist">
+<div class="border mt-2">
+<ul class="{$class??'nav nav-tabs'} px-2 pt-2 bg-light gap-2 " role="tablist">
     {foreach $tabs as $key => $vo}
     <li class="nav-item" role="presentation">
-        <a class="nav-link {if !$key}active{/if}" id="tab_{$_id}{$key}" data-toggle="tab" href="#{$_id}{$key}" role="tab" aria-controls="{$_id}{$key}" aria-selected="{if !$key}true{else}false{/if}">{$vo.label}</a>
+        <a class="nav-link {if !$key}active{/if}" id="tab_{$_id}{$key}" data-bs-toggle="tab" href="#{$_id}{$key}" role="tab" aria-controls="{$_id}{$key}" aria-selected="{if !$key}true{else}false{/if}">{$vo.label}</a>
     </li>
     {/foreach}
 </ul>
-<div class="tab-content">
+<div class="tab-content p-3">
     {foreach $tabs as $key => $vo}
-    <div class="tab-pane fade py-2 {if !$key}show active{/if}" id="{$_id}{$key}" role="tabpanel" aria-labelledby="{$_id}{$key}-tab">{echo $vo['body']}</div>
+    <div class="tab-pane fade {if !$key}show active{/if}" id="{$_id}{$key}" role="tabpanel" aria-labelledby="{$_id}{$key}-tab">{echo $vo['body']}</div>
     {/foreach}
+</div>
 </div>
 str;
         return Builder::getTemplate()->renderFromString($tpl, [
-            'label' => $this->label,
-            'items' => $this->items,
+            'tabs' => $this->tabs,
         ]);
     }
 }
