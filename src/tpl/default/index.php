@@ -45,7 +45,7 @@
                     dataType: "JSON",
                     success: function(response) {
                         alert(response.message);
-                        if (response.status) {
+                        if (response.code == 0) {
                             window.history.go(-1);
                         }
                     }

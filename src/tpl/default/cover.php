@@ -31,7 +31,7 @@
                         contentType: false,
                         dataType: "JSON",
                         success: function(response) {
-                            if (response.status) {
+                            if (response.code == 0) {
                                 callback(response);
                             } else {
                                 alert(response.message);
@@ -47,7 +47,7 @@
                 fileinput.onchange = function() {
                     $.each(event.target.files, function(indexInArray, valueOfElement) {
                         upload_by_form("{$upload_url??''}", valueOfElement, function(response) {
-                            if (response.status) {
+                            if (response.code == 0) {
                                 $("#{$id}_handler").attr("src", response.data.src);
                                 $("#{$id}_field").val(response.data.src);
                             } else {
