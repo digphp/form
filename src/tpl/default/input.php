@@ -1,6 +1,6 @@
 <div class="mt-2">
     <label for="{$id}_field" class="form-label">{$label}</label>
-    <input type="{$type??'text'}" name="{$name}" value="{$value}" id="{$id}_field" class="form-control" list="{$id}_datalist">
+    <input type="{$type??'text'}" name="{$name}" value="{$value}" id="{$id}_field" class="form-control" list="{$id}_datalist" <?php if (isset($required) && $required) { ?>required<?php } ?> <?php if (isset($disabled) && $disabled) { ?>disabled<?php } ?> <?php if (isset($readonly) && $readonly) { ?>readonly<?php } ?>>
     <datalist id="{$id}_datalist">
         {if isset($datalist) && is_array($datalist)}
         {foreach $datalist as $_k => $_vo}

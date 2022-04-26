@@ -1,6 +1,6 @@
 <div class="mt-2">
     <label for="{$id}_field" class="form-label">{$label}</label>
-    <select name="{$name}" class="form-select" id="{$id}_field">
+    <select name="{$name}" class="form-select" id="{$id}_field" <?php if (isset($required) && $required) { ?>required<?php } ?> <?php if (isset($disabled) && $disabled) { ?>disabled<?php } ?>>
         {foreach $items??[] as $_key=>$_val}
         {if is_array($_val)}
         <optgroup label="{$_key}">

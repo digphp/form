@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/lang/summernote-{$lang??'zh-CN'}.min.js"></script>
-    <textarea name="{$name}" class="d-none" id="{$id}_field">{$value}</textarea>
+    <textarea name="{$name}" class="d-none" id="{$id}_field" <?php if (isset($required) && $required) { ?>required<?php } ?> <?php if (isset($disabled) && $disabled) { ?>disabled<?php } ?> <?php if (isset($readonly) && $readonly) { ?>readonly<?php } ?>>{$value}</textarea>
     <script>
         $(document).ready(function() {
             $("#{$id}_field").summernote({

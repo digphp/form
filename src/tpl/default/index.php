@@ -48,6 +48,9 @@
                         if (response.code == 0) {
                             window.history.go(-1);
                         }
+                    },
+                    error: function(response, b, c) {
+                        alert("[" + response.status + "] " + response.responseText);
                     }
                 });
             });

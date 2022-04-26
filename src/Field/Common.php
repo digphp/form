@@ -33,12 +33,6 @@ abstract class Common implements ItemInterface
         return $this;
     }
 
-    public function setHelp(string $help): self
-    {
-        $this->help = $help;
-        return $this;
-    }
-
     public function __toString()
     {
         $ref = new ReflectionClass(get_called_class());

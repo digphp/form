@@ -1,7 +1,7 @@
 <div class="mt-2">
     <label for="{$id}_field" class="form-label">{$label}</label>
     <div class="input-group">
-        <input type="text" name="{$name}" value="{$value}" id="{$id}_field" class="form-control">
+        <input type="text" name="{$name}" value="{$value}" id="{$id}_field" class="form-control" <?php if (isset($required) && $required) { ?>required<?php } ?> <?php if (isset($disabled) && $disabled) { ?>disabled<?php } ?> <?php if (isset($readonly) && $readonly) { ?>readonly<?php } ?>>
         <button class="btn btn-primary" type="button" id="{$id}_trigger">上传</button>
     </div>
     {if isset($help) && $help}
